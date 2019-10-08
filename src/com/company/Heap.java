@@ -22,7 +22,6 @@ public class Heap {
         }
         // создаём массив кучи HeapArray из заданного
         // размер массива выбираем на основе глубины depth
-        // ...
     }
 
     /**
@@ -59,15 +58,17 @@ public class Heap {
 
     public int GetMax()
     {
-        // вернуть значение корня и перестроить кучу
+        // если куча пуста
         if(size == 0){
             return -1;
         }
+
+        // вернуть значение корня и перестроить кучу
         int pop = HeapArray[0];
         HeapArray[0] = HeapArray[--size];
         HeapArray[size] = 0;
         heapify(HeapArray, size, 0);
-        return pop; // если куча пуста
+        return pop;
     }
 
     void sendUp(int index){
@@ -93,5 +94,21 @@ public class Heap {
             return true;
         }
          // если куча вся заполнена
+    }
+}
+
+class HeapSort{
+    public Heap HeapObject;
+
+    HeapSort(int[] arr){
+        HeapObject = new Heap();
+        int depth = (int)Math.ceil(Math.log(arr.length + 1) / Math.log(2)) - 1;
+        HeapObject.MakeHeap(arr, depth);
+        /*for (int i = 0; i < arr.length; i++) {
+            HeapObject.Add(arr[i]);
+        }*/
+    }
+    public int GetNextMax(){
+        return HeapObject.GetMax();
     }
 }

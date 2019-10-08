@@ -3,9 +3,20 @@ package com.company;
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here
-        int[] arr = {1, 3, 5, 4, 6, 13, 10, 9, 8, 15, 17};
+        testHeapSort();
+    }
 
+    public static void testHeapSort(){
+        int[] arr = {1, 3, 5, 4, 6, 13, 10, 9, 8, 15, 17};
+        HeapSort hs = new HeapSort(arr);
+        int a = hs.GetNextMax();
+        while(a!=-1){
+            a = hs.GetNextMax();
+            System.out.println(a);
+        }
+    }
+    public static void testHeap(){
+        int[] arr = {1, 3, 5, 4, 6, 13, 10, 9, 8, 15, 17};
         Heap h = new Heap();
         h.MakeHeap(arr, 3); //max 17
         //System.out.println(h.GetMax()); //max 15
